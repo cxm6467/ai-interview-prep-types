@@ -302,6 +302,50 @@ testFunction function
 
 #### `TestInterface`
 
+TestInterface interface
+
+**File:** `src/core/interview.ts`
+
+**Properties:**
+
+- `id: string`
+
+- `name: string`
+
+### Functions
+
+#### `testFunction`
+
+testFunction function
+
+**File:** `src/core/interview.ts`
+
+## Interfaces
+
+#### `TestInterface`
+
+TestInterface interface
+
+**File:** `src/core/interview.ts`
+
+**Properties:**
+
+- `id: string`
+
+- `name: string`
+
+### Functions
+
+#### `testFunction`
+
+testFunction function
+
+**File:** `src/core/interview.ts`
+
+## Interfaces
+
+#### `TestInterface`
+
 Test interface for interview preparation types
 
 **File:** `src/core/interview.ts`
