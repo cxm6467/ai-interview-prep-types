@@ -1,1 +1,0 @@
-// UI component type definitions

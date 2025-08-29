@@ -1,1 +1,0 @@
-// Resume-related type definitions

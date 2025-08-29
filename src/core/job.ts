@@ -1,1 +1,0 @@
-// Job-related type definitions

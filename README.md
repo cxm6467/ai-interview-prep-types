@@ -180,6 +180,27 @@ TestInterface interface
 
 - `name: string`
 
+### Functions
+
+#### `testFunction`
+
+testFunction function
+
+**File:** `src/core/interview.ts`
+
+## Interfaces
+
+#### `TestInterface`
+
+TestInterface interface
+
+**File:** `src/core/interview.ts`
+
+**Properties:**
+
+- `id: string`
+
+- `name: string`
 
 ### Functions
 

@@ -1,4 +1,3 @@
-// Interview-related type definitions
 
 /**
  * TestInterface interface
