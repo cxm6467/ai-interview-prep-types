@@ -1,0 +1,2 @@
+# Validate JSDoc comments before push (no auto-fix)
+npm run docs:validate

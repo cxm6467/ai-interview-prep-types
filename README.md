@@ -141,6 +141,164 @@ npm run ci
 - 🔄 Unit tests for type validation
 - 🔄 Automated publishing workflow
 
+## API Documentation
+
+### Interfaces
+
+#### `TestInterface`
+
+TestInterface interface
+
+**File:** `src/core/interview.ts`
+
+**Properties:**
+
+- `id: string`
+
+- `name: string`
+
+
+### Functions
+
+#### `testFunction`
+
+testFunction function
+
+**File:** `src/core/interview.ts`
+
+## Interfaces
+
+#### `TestInterface`
+
+TestInterface interface
+
+**File:** `src/core/interview.ts`
+
+**Properties:**
+
+- `id: string`
+
+- `name: string`
+
+
+### Functions
+
+#### `testFunction`
+
+testFunction function
+
+**File:** `src/core/interview.ts`
+
+## Interfaces
+
+#### `TestInterface`
+
+TestInterface interface
+
+**File:** `src/core/interview.ts`
+
+**Properties:**
+
+- `id: string`
+
+- `name: string`
+
+### Functions
+
+#### `testFunction`
+
+testFunction function
+
+**File:** `src/core/interview.ts`
+
+## Interfaces
+
+#### `TestInterface`
+
+TestInterface interface
+
+**File:** `src/core/interview.ts`
+
+**Properties:**
+
+- `id: string`
+
+- `name: string`
+
+### Functions
+
+#### `testFunction`
+
+testFunction function
+
+**File:** `src/core/interview.ts`
+
+## Interfaces
+
+#### `TestInterface`
+
+TestInterface interface
+
+**File:** `src/core/interview.ts`
+
+**Properties:**
+
+- `id: string`
+
+- `name: string`
+
+### Functions
+
+#### `testFunction`
+
+testFunction function
+
+**File:** `src/core/interview.ts`
+
+## Interfaces
+
+#### `TestInterface`
+
+TestInterface interface
+
+**File:** `src/core/interview.ts`
+
+**Properties:**
+
+- `id: string`
+
+- `name: string`
+
+### Functions
+
+#### `testFunction`
+
+testFunction function
+
+**File:** `src/core/interview.ts`
+
+## Interfaces
+
+#### `TestInterface`
+
+Test interface for interview preparation types
+
+**File:** `src/core/interview.ts`
+
+**Properties:**
+
+- `id: string`
+
+- `name: string`
+
+### Functions
+
+#### `testFunction`
+
+Test function for development purposes
+
+**File:** `src/core/interview.ts`
+
 ## Contributing
 
 This package follows conventional commits and includes automated commit linting. Please ensure your commits follow the conventional commit format.
