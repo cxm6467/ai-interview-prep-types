@@ -15,6 +15,23 @@ This package provides comprehensive TypeScript type definitions for the AI Inter
 - **Application State**: Theme management and app state interfaces
 - **Utility Types**: ATS scoring, candidate questions, and more
 
+## Project Structure
+
+```
+ai-interview-prep-types/
+├── README.md                 # Project documentation
+├── package.json             # Package configuration and dependencies
+├── tsconfig.json            # TypeScript configuration
+├── commitlint.config.js     # Commit linting configuration
+├── src/                     # Source code
+│   ├── index.ts            # Main entry point for exports
+│   └── types.ts            # Type definitions (to be populated)
+├── dist/                    # Compiled JavaScript output (generated)
+├── docs/                    # Documentation
+│   └── MIGRATION_PLAN.md   # Migration strategy documentation
+└── tests/                   # Test files (to be added)
+```
+
 ## Installation
 
 ```bash
@@ -66,7 +83,13 @@ This package is being created to extract and centralize type definitions from th
 
 ## Development
 
+### Getting Started
+
 ```bash
+# Clone the repository
+git clone https://github.com/cxm6467/ai-interview-prep-types.git
+cd ai-interview-prep-types
+
 # Install dependencies
 npm install
 
@@ -76,9 +99,45 @@ npm run build
 # Format code
 npm run format
 
-# Run CI checks
+# Check formatting
+npm run format:check
+
+# Run CI checks (build + format check)
 npm run ci
 ```
+
+### Package Scripts
+
+- `npm run build` - Compiles TypeScript to JavaScript in the `dist/` directory
+- `npm run format` - Formats code using Prettier
+- `npm run format:check` - Checks if code is formatted correctly
+- `npm run ci` - Runs build and format check (used in CI/CD)
+- `npm run test` - Placeholder for future tests
+
+### Development Workflow
+
+1. **Type Definitions**: Add new types in `src/types.ts`
+2. **Exports**: Update `src/index.ts` to export new types
+3. **Build**: Run `npm run build` to compile TypeScript
+4. **Format**: Run `npm run format` to ensure consistent formatting
+5. **Commit**: Use conventional commit messages (enforced by commitlint)
+
+## Current Status
+
+⚠️ **Early Development**: This package is currently in early development phase. The type definitions are not yet implemented but the infrastructure is in place.
+
+### What's Ready
+- ✅ Package structure and build system
+- ✅ TypeScript configuration
+- ✅ Code formatting with Prettier
+- ✅ Commit linting with conventional commits
+- ✅ Git hooks with Husky
+
+### What's Coming
+- 🔄 Core type definitions extraction
+- 🔄 Comprehensive JSDoc documentation
+- 🔄 Unit tests for type validation
+- 🔄 Automated publishing workflow
 
 ## Contributing
 
