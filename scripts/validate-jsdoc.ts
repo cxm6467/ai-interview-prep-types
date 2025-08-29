@@ -99,15 +99,27 @@ class JSDocValidator {
       modifiedContent = result.content;
       hasChanges = hasChanges || result.hasChanges;
 
-      const interfaceResult = this.fixInterfaces(modifiedContent, filePath, modifiedContent.split('\n'));
+      const interfaceResult = this.fixInterfaces(
+        modifiedContent,
+        filePath,
+        modifiedContent.split('\n'),
+      );
       modifiedContent = interfaceResult.content;
       hasChanges = hasChanges || interfaceResult.hasChanges;
 
-      const typeResult = this.fixTypes(modifiedContent, filePath, modifiedContent.split('\n'));
+      const typeResult = this.fixTypes(
+        modifiedContent,
+        filePath,
+        modifiedContent.split('\n'),
+      );
       modifiedContent = typeResult.content;
       hasChanges = hasChanges || typeResult.hasChanges;
 
-      const classResult = this.fixClasses(modifiedContent, filePath, modifiedContent.split('\n'));
+      const classResult = this.fixClasses(
+        modifiedContent,
+        filePath,
+        modifiedContent.split('\n'),
+      );
       modifiedContent = classResult.content;
       hasChanges = hasChanges || classResult.hasChanges;
 
@@ -229,7 +241,11 @@ class JSDocValidator {
     }
   }
 
-  private fixFunctions(content: string, filePath: string, lines: string[]): { content: string; hasChanges: boolean } {
+  private fixFunctions(
+    content: string,
+    filePath: string,
+    lines: string[],
+  ): { content: string; hasChanges: boolean } {
     let modifiedContent = content;
     let hasChanges = false;
 
@@ -239,7 +255,11 @@ class JSDocValidator {
       /^(?:export\s+)?const\s+(\w+)\s*=\s*(?:\([^)]*\)\s*=>\s*{|async\s*\([^)]*\)\s*=>\s*{)/gm;
 
     let match: RegExpExecArray | null;
-    const matches: Array<{ name: string; index: number; type: 'function' | 'arrow' }> = [];
+    const matches: Array<{
+      name: string;
+      index: number;
+      type: 'function' | 'arrow';
+    }> = [];
 
     // Collect all matches first
     while ((match = functionRegex.exec(content)) !== null) {
@@ -258,13 +278,20 @@ class JSDocValidator {
     for (const matchData of matches) {
       const lineNumber = this.getLineNumber(modifiedContent, matchData.index);
       const currentLines = modifiedContent.split('\n');
-      
+
       if (!this.hasJSDocBefore(currentLines, lineNumber - 1)) {
         const jsdoc = this.generateFunctionJSDoc(matchData.name);
         const lineIndex = lineNumber - 1;
         const indentation = this.getIndentation(currentLines[lineIndex]);
-        
-        currentLines.splice(lineIndex, 0, '', `${indentation}/**`, `${indentation} * ${jsdoc}`, `${indentation} */`);
+
+        currentLines.splice(
+          lineIndex,
+          0,
+          '',
+          `${indentation}/**`,
+          `${indentation} * ${jsdoc}`,
+          `${indentation} */`,
+        );
         modifiedContent = currentLines.join('\n');
         hasChanges = true;
       }
@@ -273,7 +300,11 @@ class JSDocValidator {
     return { content: modifiedContent, hasChanges };
   }
 
-  private fixInterfaces(content: string, filePath: string, lines: string[]): { content: string; hasChanges: boolean } {
+  private fixInterfaces(
+    content: string,
+    filePath: string,
+    lines: string[],
+  ): { content: string; hasChanges: boolean } {
     let modifiedContent = content;
     let hasChanges = false;
 
@@ -291,13 +322,20 @@ class JSDocValidator {
     for (const matchData of matches) {
       const lineNumber = this.getLineNumber(modifiedContent, matchData.index);
       const currentLines = modifiedContent.split('\n');
-      
+
       if (!this.hasJSDocBefore(currentLines, lineNumber - 1)) {
         const jsdoc = this.generateInterfaceJSDoc(matchData.name);
         const lineIndex = lineNumber - 1;
         const indentation = this.getIndentation(currentLines[lineIndex]);
-        
-        currentLines.splice(lineIndex, 0, '', `${indentation}/**`, `${indentation} * ${jsdoc}`, `${indentation} */`);
+
+        currentLines.splice(
+          lineIndex,
+          0,
+          '',
+          `${indentation}/**`,
+          `${indentation} * ${jsdoc}`,
+          `${indentation} */`,
+        );
         modifiedContent = currentLines.join('\n');
         hasChanges = true;
       }
@@ -306,7 +344,11 @@ class JSDocValidator {
     return { content: modifiedContent, hasChanges };
   }
 
-  private fixTypes(content: string, filePath: string, lines: string[]): { content: string; hasChanges: boolean } {
+  private fixTypes(
+    content: string,
+    filePath: string,
+    lines: string[],
+  ): { content: string; hasChanges: boolean } {
     let modifiedContent = content;
     let hasChanges = false;
 
@@ -324,13 +366,20 @@ class JSDocValidator {
     for (const matchData of matches) {
       const lineNumber = this.getLineNumber(modifiedContent, matchData.index);
       const currentLines = modifiedContent.split('\n');
-      
+
       if (!this.hasJSDocBefore(currentLines, lineNumber - 1)) {
         const jsdoc = this.generateTypeJSDoc(matchData.name);
         const lineIndex = lineNumber - 1;
         const indentation = this.getIndentation(currentLines[lineIndex]);
-        
-        currentLines.splice(lineIndex, 0, '', `${indentation}/**`, `${indentation} * ${jsdoc}`, `${indentation} */`);
+
+        currentLines.splice(
+          lineIndex,
+          0,
+          '',
+          `${indentation}/**`,
+          `${indentation} * ${jsdoc}`,
+          `${indentation} */`,
+        );
         modifiedContent = currentLines.join('\n');
         hasChanges = true;
       }
@@ -339,7 +388,11 @@ class JSDocValidator {
     return { content: modifiedContent, hasChanges };
   }
 
-  private fixClasses(content: string, filePath: string, lines: string[]): { content: string; hasChanges: boolean } {
+  private fixClasses(
+    content: string,
+    filePath: string,
+    lines: string[],
+  ): { content: string; hasChanges: boolean } {
     let modifiedContent = content;
     let hasChanges = false;
 
@@ -357,13 +410,20 @@ class JSDocValidator {
     for (const matchData of matches) {
       const lineNumber = this.getLineNumber(modifiedContent, matchData.index);
       const currentLines = modifiedContent.split('\n');
-      
+
       if (!this.hasJSDocBefore(currentLines, lineNumber - 1)) {
         const jsdoc = this.generateClassJSDoc(matchData.name);
         const lineIndex = lineNumber - 1;
         const indentation = this.getIndentation(currentLines[lineIndex]);
-        
-        currentLines.splice(lineIndex, 0, '', `${indentation}/**`, `${indentation} * ${jsdoc}`, `${indentation} */`);
+
+        currentLines.splice(
+          lineIndex,
+          0,
+          '',
+          `${indentation}/**`,
+          `${indentation} * ${jsdoc}`,
+          `${indentation} */`,
+        );
         modifiedContent = currentLines.join('\n');
         hasChanges = true;
       }
@@ -426,7 +486,9 @@ class JSDocValidator {
   }
 
   async validate(autoFix: boolean = false): Promise<boolean> {
-    console.log(`🔍 ${autoFix ? 'Auto-fixing and validating' : 'Validating'} JSDoc comments in TypeScript files...\n`);
+    console.log(
+      `🔍 ${autoFix ? 'Auto-fixing and validating' : 'Validating'} JSDoc comments in TypeScript files...\n`,
+    );
 
     try {
       const files = await glob(TS_FILE_PATTERNS, {
@@ -439,7 +501,9 @@ class JSDocValidator {
         return true;
       }
 
-      console.log(`Found ${files.length} TypeScript files to ${autoFix ? 'auto-fix' : 'validate'}\n`);
+      console.log(
+        `Found ${files.length} TypeScript files to ${autoFix ? 'auto-fix' : 'validate'}\n`,
+      );
 
       for (const file of files) {
         this.validateFile(file, autoFix);
@@ -482,7 +546,7 @@ class JSDocValidator {
 
       const apiDocs = this.extractAPIDocumentation(files);
       await this.updateREADME(apiDocs);
-      
+
       console.log('✅ Documentation updated successfully!');
     } catch (error) {
       console.error('❌ Error generating documentation:', error);
@@ -494,7 +558,7 @@ class JSDocValidator {
       interfaces: [],
       types: [],
       functions: [],
-      classes: []
+      classes: [],
     };
 
     for (const file of files) {
@@ -502,16 +566,16 @@ class JSDocValidator {
 
       const content = readFileSync(file, 'utf8');
       const relativePath = relative(process.cwd(), file);
-      
+
       // Extract interfaces
       docs.interfaces.push(...this.extractInterfaces(content, relativePath));
-      
+
       // Extract types
       docs.types.push(...this.extractTypes(content, relativePath));
-      
+
       // Extract functions
       docs.functions.push(...this.extractFunctions(content, relativePath));
-      
+
       // Extract classes
       docs.classes.push(...this.extractClasses(content, relativePath));
     }
@@ -521,7 +585,8 @@ class JSDocValidator {
 
   private extractInterfaces(content: string, filePath: string): InterfaceDoc[] {
     const interfaces: InterfaceDoc[] = [];
-    const interfaceRegex = /\/\*\*\s*\n((?:\s*\*.*\n)*)\s*\*\/\s*\n(?:export\s+)?interface\s+(\w+)([^{]*)\{([^}]*)\}/gm;
+    const interfaceRegex =
+      /\/\*\*\s*\n((?:\s*\*.*\n)*)\s*\*\/\s*\n(?:export\s+)?interface\s+(\w+)([^{]*)\{([^}]*)\}/gm;
     let match: RegExpExecArray | null;
 
     while ((match = interfaceRegex.exec(content)) !== null) {
@@ -534,7 +599,7 @@ class JSDocValidator {
         description,
         properties,
         filePath,
-        generics: generics.trim() || undefined
+        generics: generics.trim() || undefined,
       });
     }
 
@@ -543,7 +608,8 @@ class JSDocValidator {
 
   private extractTypes(content: string, filePath: string): TypeDoc[] {
     const types: TypeDoc[] = [];
-    const typeRegex = /\/\*\*\s*\n((?:\s*\*.*\n)*)\s*\*\/\s*\n(?:export\s+)?type\s+(\w+)(?:<[^>]*>)?\s*=\s*([^;]+);/gm;
+    const typeRegex =
+      /\/\*\*\s*\n((?:\s*\*.*\n)*)\s*\*\/\s*\n(?:export\s+)?type\s+(\w+)(?:<[^>]*>)?\s*=\s*([^;]+);/gm;
     let match: RegExpExecArray | null;
 
     while ((match = typeRegex.exec(content)) !== null) {
@@ -554,7 +620,7 @@ class JSDocValidator {
         name,
         description,
         definition: definition.trim(),
-        filePath
+        filePath,
       });
     }
 
@@ -563,12 +629,17 @@ class JSDocValidator {
 
   private extractFunctions(content: string, filePath: string): FunctionDoc[] {
     const functions: FunctionDoc[] = [];
-    const functionRegex = /\/\*\*\s*\n((?:\s*\*.*\n)*)\s*\*\/\s*\n(?:export\s+)?(?:async\s+)?function\s+(\w+)\s*\(([^)]*)\)\s*:\s*([^{;]+)/gm;
+    const functionRegex =
+      /\/\*\*\s*\n((?:\s*\*.*\n)*)\s*\*\/\s*\n(?:export\s+)?(?:async\s+)?function\s+(\w+)\s*\(([^)]*)\)\s*:\s*([^{;]+)/gm;
     let match: RegExpExecArray | null;
 
     while ((match = functionRegex.exec(content)) !== null) {
       const [, jsdocContent, name, params, returnType] = match;
-      const { description, params: paramDocs, returns } = this.parseJSDocContent(jsdocContent);
+      const {
+        description,
+        params: paramDocs,
+        returns,
+      } = this.parseJSDocContent(jsdocContent);
 
       functions.push({
         name,
@@ -576,7 +647,7 @@ class JSDocValidator {
         parameters: this.parseFunctionParameters(params, paramDocs),
         returnType: returnType.trim(),
         returns,
-        filePath
+        filePath,
       });
     }
 
@@ -585,7 +656,8 @@ class JSDocValidator {
 
   private extractClasses(content: string, filePath: string): ClassDoc[] {
     const classes: ClassDoc[] = [];
-    const classRegex = /\/\*\*\s*\n((?:\s*\*.*\n)*)\s*\*\/\s*\n(?:export\s+)?(?:abstract\s+)?class\s+(\w+)(?:<[^>]*>)?(?:\s+extends\s+[^{]+)?\s*\{([^}]*)\}/gm;
+    const classRegex =
+      /\/\*\*\s*\n((?:\s*\*.*\n)*)\s*\*\/\s*\n(?:export\s+)?(?:abstract\s+)?class\s+(\w+)(?:<[^>]*>)?(?:\s+extends\s+[^{]+)?\s*\{([^}]*)\}/gm;
     let match: RegExpExecArray | null;
 
     while ((match = classRegex.exec(content)) !== null) {
@@ -597,7 +669,7 @@ class JSDocValidator {
         name,
         description,
         methods,
-        filePath
+        filePath,
       });
     }
 
@@ -607,7 +679,7 @@ class JSDocValidator {
   private parseJSDocDescription(jsdocContent: string): string {
     const lines = jsdocContent.split('\n');
     const descriptionLines: string[] = [];
-    
+
     for (const line of lines) {
       const trimmed = line.replace(/^\s*\*\s?/, '').trim();
       if (trimmed && !trimmed.startsWith('@')) {
@@ -616,19 +688,23 @@ class JSDocValidator {
         break;
       }
     }
-    
+
     return descriptionLines.join(' ');
   }
 
-  private parseJSDocContent(jsdocContent: string): { description: string; params: ParamDoc[]; returns?: string } {
+  private parseJSDocContent(jsdocContent: string): {
+    description: string;
+    params: ParamDoc[];
+    returns?: string;
+  } {
     const lines = jsdocContent.split('\n');
     const descriptionLines: string[] = [];
     const params: ParamDoc[] = [];
     let returns: string | undefined;
-    
+
     for (const line of lines) {
       const trimmed = line.replace(/^\s*\*\s?/, '').trim();
-      
+
       if (trimmed && !trimmed.startsWith('@')) {
         descriptionLines.push(trimmed);
       } else if (trimmed.startsWith('@param')) {
@@ -636,18 +712,18 @@ class JSDocValidator {
         if (paramMatch) {
           params.push({
             name: paramMatch[1],
-            description: paramMatch[2]
+            description: paramMatch[2],
           });
         }
       } else if (trimmed.startsWith('@returns')) {
         returns = trimmed.replace('@returns', '').trim();
       }
     }
-    
+
     return {
       description: descriptionLines.join(' '),
       params,
-      returns
+      returns,
     };
   }
 
@@ -661,31 +737,34 @@ class JSDocValidator {
       properties.push({
         name,
         type: type.trim(),
-        optional: body.includes(`${name}?:`)
+        optional: body.includes(`${name}?:`),
       });
     }
 
     return properties;
   }
 
-  private parseFunctionParameters(params: string, paramDocs: ParamDoc[]): ParameterDoc[] {
+  private parseFunctionParameters(
+    params: string,
+    paramDocs: ParamDoc[],
+  ): ParameterDoc[] {
     const parameters: ParameterDoc[] = [];
-    
+
     if (!params.trim()) return parameters;
 
-    const paramList = params.split(',').map(p => p.trim());
-    
+    const paramList = params.split(',').map((p) => p.trim());
+
     for (const param of paramList) {
       const match = param.match(/(\w+)(?:\?)?\s*:\s*(.+)/);
       if (match) {
         const [, name, type] = match;
-        const doc = paramDocs.find(p => p.name === name);
-        
+        const doc = paramDocs.find((p) => p.name === name);
+
         parameters.push({
           name,
           type: type.trim(),
           optional: param.includes(`${name}?:`),
-          description: doc?.description
+          description: doc?.description,
         });
       }
     }
@@ -702,7 +781,7 @@ class JSDocValidator {
       const [signature, name] = match;
       methods.push({
         name,
-        signature: signature.trim()
+        signature: signature.trim(),
       });
     }
 
@@ -711,7 +790,7 @@ class JSDocValidator {
 
   private async updateREADME(docs: APIDocumentation): Promise<void> {
     const readmePath = resolve(process.cwd(), 'README.md');
-    
+
     if (!existsSync(readmePath)) {
       console.log('⚠️  README.md not found, skipping documentation update');
       return;
@@ -719,10 +798,11 @@ class JSDocValidator {
 
     const currentContent = readFileSync(readmePath, 'utf8');
     const apiSection = this.generateAPISection(docs);
-    
+
     // Find existing API documentation section and replace it, or append if not found
-    const apiSectionRegex = /## API Documentation[\s\S]*?(?=## (?!API Documentation)|$)/;
-    
+    const apiSectionRegex =
+      /## API Documentation[\s\S]*?(?=## (?!API Documentation)|$)/;
+
     let newContent: string;
     if (apiSectionRegex.test(currentContent)) {
       newContent = currentContent.replace(apiSectionRegex, apiSection);
@@ -730,7 +810,10 @@ class JSDocValidator {
       // Insert before Contributing section if it exists, otherwise append
       const contributingRegex = /## Contributing/;
       if (contributingRegex.test(currentContent)) {
-        newContent = currentContent.replace(contributingRegex, `${apiSection}\n## Contributing`);
+        newContent = currentContent.replace(
+          contributingRegex,
+          `${apiSection}\n## Contributing`,
+        );
       } else {
         newContent = `${currentContent}\n\n${apiSection}`;
       }
@@ -749,7 +832,7 @@ class JSDocValidator {
         sections.push(`#### \`${iface.name}\`\n`);
         sections.push(`${iface.description}\n`);
         sections.push(`**File:** \`${iface.filePath}\`\n`);
-        
+
         if (iface.properties.length > 0) {
           sections.push('**Properties:**\n');
           for (const prop of iface.properties) {
@@ -778,16 +861,18 @@ class JSDocValidator {
         sections.push(`#### \`${func.name}\`\n`);
         sections.push(`${func.description}\n`);
         sections.push(`**File:** \`${func.filePath}\`\n`);
-        
+
         if (func.parameters.length > 0) {
           sections.push('**Parameters:**\n');
           for (const param of func.parameters) {
             const optional = param.optional ? '?' : '';
             const desc = param.description ? ` - ${param.description}` : '';
-            sections.push(`- \`${param.name}${optional}: ${param.type}\`${desc}\n`);
+            sections.push(
+              `- \`${param.name}${optional}: ${param.type}\`${desc}\n`,
+            );
           }
         }
-        
+
         if (func.returns) {
           sections.push(`**Returns:** ${func.returns}\n`);
         }
@@ -801,7 +886,7 @@ class JSDocValidator {
         sections.push(`#### \`${cls.name}\`\n`);
         sections.push(`${cls.description}\n`);
         sections.push(`**File:** \`${cls.filePath}\`\n`);
-        
+
         if (cls.methods.length > 0) {
           sections.push('**Methods:**\n');
           for (const method of cls.methods) {
@@ -822,7 +907,9 @@ class JSDocValidator {
     }
 
     if (this.fixes.length > 0 && autoFix) {
-      console.log(`✅ Auto-fixed ${this.fixes.length} files with missing JSDoc comments!`);
+      console.log(
+        `✅ Auto-fixed ${this.fixes.length} files with missing JSDoc comments!`,
+      );
       return;
     }
 
@@ -846,7 +933,9 @@ class JSDocValidator {
       console.log(
         'Please add JSDoc comments to the functions, interfaces, types, and classes listed above.',
       );
-      console.log('Or run with --fix flag to auto-generate basic JSDoc comments.');
+      console.log(
+        'Or run with --fix flag to auto-generate basic JSDoc comments.',
+      );
       console.log('JSDoc format example:');
       console.log(`
 /**
@@ -863,9 +952,9 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const validator = new JSDocValidator();
   const hasFixFlag = process.argv.includes('--fix');
   const hasDocsFlag = process.argv.includes('--docs');
-  
+
   let operation: Promise<boolean | void>;
-  
+
   if (hasDocsFlag) {
     operation = validator.generateDocs();
   } else if (hasFixFlag) {
@@ -873,7 +962,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   } else {
     operation = validator.validate();
   }
-  
+
   operation
     .then((success) => {
       if (hasDocsFlag) {
