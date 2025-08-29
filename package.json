@@ -21,7 +21,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "ci": "npm run build && npm run check-format",
+    "ci": "npm run build && npm run format:check",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky",

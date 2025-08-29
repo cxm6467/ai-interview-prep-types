@@ -30,7 +30,7 @@ import type {
   InterviewQuestion,
   JobDescription,
   AppState,
-  Theme
+  Theme,
 } from '@cxm6467/ai-interview-prep-types';
 
 // Use the types in your application
@@ -48,16 +48,19 @@ const question: InterviewQuestion = {
 This package is being created to extract and centralize type definitions from the main [ai-interview-prep](https://github.com/cxm6467/ai-interview-prep) repository (develop branch).
 
 ### Phase 1: Type Extraction
+
 - [ ] Extract core type definitions from `apps/frontend/src/types/index.ts`
 - [ ] Extract PDF.js type definitions
 - [ ] Set up proper TypeScript compilation and build process
 
 ### Phase 2: Package Integration
+
 - [ ] Update main application to use this types package
 - [ ] Ensure backward compatibility
 - [ ] Update import statements across the application
 
 ### Phase 3: Enhancement
+
 - [ ] Add comprehensive JSDoc documentation
 - [ ] Set up automated testing for type definitions
 - [ ] Implement semantic versioning for type changes
