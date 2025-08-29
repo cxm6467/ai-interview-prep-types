@@ -140,7 +140,6 @@ class JSDocValidator {
     }
   }
 
-
   private hasJSDocBefore(lines: string[], lineIndex: number): boolean {
     // Look backwards for JSDoc comment (start from line before the declaration)
     for (let i = lineIndex - 1; i >= 0; i--) {
@@ -212,9 +211,13 @@ class JSDocValidator {
       console.log(`   ${warning.file}:${warning.line} - ${warning.message}`);
     });
     console.log('');
-    
-    console.log('ℹ️  These are warnings only - commits and pushes will still succeed.');
-    console.log('Please consider adding JSDoc comments to improve documentation.');
+
+    console.log(
+      'ℹ️  These are warnings only - commits and pushes will still succeed.',
+    );
+    console.log(
+      'Please consider adding JSDoc comments to improve documentation.',
+    );
     console.log('JSDoc format example:');
     console.log(`
 /**
@@ -228,8 +231,9 @@ class JSDocValidator {
 // Run validation if called directly
 if (import.meta.url === `file://${process.argv[1]}`) {
   const validator = new JSDocValidator();
-  
-  validator.validate()
+
+  validator
+    .validate()
     .then(() => {
       process.exit(0); // Always exit with success
     })
