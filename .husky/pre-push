@@ -1,0 +1,2 @@
+# Run JSDoc validation before push
+npm run validate:jsdoc
