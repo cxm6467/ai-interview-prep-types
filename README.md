@@ -157,7 +157,6 @@ TestInterface interface
 
 - `name: string`
 
-
 ### Functions
 
 #### `testFunction`

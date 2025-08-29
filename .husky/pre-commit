@@ -1,5 +1,5 @@
-# Auto-fix JSDoc comments and generate documentation before commit
-npm run docs:fix && git add .
+# Validate JSDoc comments with warnings only
+npm run docs:validate
 npm test
 npm run format
 npm run build
