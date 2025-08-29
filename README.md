@@ -1,7 +1,6 @@
 # **AI Interview Prep Types**
 
 [![npm version](https://badge.fury.io/js/%40cxm6467%2Fai-interview-prep-types.svg)](https://badge.fury.io/js/%40cxm6467%2Fai-interview-prep-types)
-[![Build Status](https://github.com/cxm6467/ai-interview-prep-types/workflows/CI/badge.svg)](https://github.com/cxm6467/ai-interview-prep-types/actions)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.2-blue.svg)](https://www.typescriptlang.org/)
 
 Shared TypeScript type definitions for the [ai-interview-prep](https://github.com/cxm6467/ai-interview-prep) application ecosystem.
