@@ -28,6 +28,7 @@
     "format:check": "prettier --check .",
     "prepare": "husky",
     "test": "echo \"No tests yet\" && exit 0",
+    "docs:validate": "npx tsx scripts/validate-jsdoc.ts",
     "validate:jsdoc": "npx tsx scripts/validate-jsdoc.ts"
   },
   "devDependencies": {
