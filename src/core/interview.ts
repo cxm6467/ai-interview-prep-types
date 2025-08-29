@@ -15,6 +15,10 @@
 /**
  * TestInterface interface
  */
+
+/**
+ * TestInterface interface
+ */
 export interface TestInterface {
   id: string;
   name: string;
@@ -22,6 +26,10 @@ export interface TestInterface {
 
 /**
  * Test function for development purposes
+ */
+
+/**
+ * testFunction function
  */
 
 /**
