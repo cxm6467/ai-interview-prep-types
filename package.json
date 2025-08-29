@@ -1,0 +1,20 @@
+{
+  "name": "ai-interview-prep-types",
+  "version": "0.0.1",
+  "description": "Types for ai-interview-prep",
+  "homepage": "https://github.com/cxm6467/ai-interview-prep-types#readme",
+  "bugs": {
+    "url": "https://github.com/cxm6467/ai-interview-prep-types/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cxm6467/ai-interview-prep-types.git"
+  },
+  "license": "ISC",
+  "author": "Chris Marasco",
+  "type": "esm",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  }
+}
