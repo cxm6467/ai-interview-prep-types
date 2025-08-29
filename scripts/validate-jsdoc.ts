@@ -454,8 +454,8 @@ class JSDocValidator {
   }
 
   private hasJSDocBefore(lines: string[], lineIndex: number): boolean {
-    // Look backwards for JSDoc comment
-    for (let i = lineIndex; i >= 0; i--) {
+    // Look backwards for JSDoc comment (start from line before the declaration)
+    for (let i = lineIndex - 1; i >= 0; i--) {
       const line = lines[i].trim();
 
       if (line === '') {
