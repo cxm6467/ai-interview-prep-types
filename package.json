@@ -1,7 +1,12 @@
 {
-  "name": "ai-interview-prep-types",
+  "name": "@cxm6467/ai-interview-prep-types",
   "version": "0.0.1",
-  "description": "Types for ai-interview-prep",
+  "description": "A package for types for ai interview prep types",
+  "keywords": [
+    "cxm6467",
+    "ai-interview-prep",
+    "types"
+  ],
   "homepage": "https://github.com/cxm6467/ai-interview-prep-types#readme",
   "bugs": {
     "url": "https://github.com/cxm6467/ai-interview-prep-types/issues"
@@ -11,10 +16,13 @@
     "url": "git+https://github.com/cxm6467/ai-interview-prep-types.git"
   },
   "license": "ISC",
-  "author": "Chris Marasco",
-  "type": "esm",
+  "author": "Chris Marasco (github.com/cxm6467)",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
   }
 }
