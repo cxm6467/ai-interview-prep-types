@@ -22,6 +22,8 @@
   "scripts": {
     "build": "tsc",
     "ci": "npm run build && npm run format:check",
+    "docs": "npx tsx scripts/validate-jsdoc.ts --docs",
+    "docs:fix": "npx tsx scripts/validate-jsdoc.ts --fix && npm run docs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky",

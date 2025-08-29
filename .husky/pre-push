@@ -1,2 +1,2 @@
-# Run JSDoc validation before push
-npm run validate:jsdoc
+# Run JSDoc validation and documentation generation before push
+npm run docs:fix
