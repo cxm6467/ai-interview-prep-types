@@ -90,11 +90,6 @@ export type ExtendedTextColor = TextColor | 'tertiary' | 'accent';
 export type FileTypeMappings = Record<string, string[]>;
 
 /**
- * CSS style properties
- */
-export type StyleProperties = Record<string, unknown>;
-
-/**
  * Card padding size options
  */
 export type CardPaddingSize = 'none' | 'small' | 'medium' | 'large';
@@ -105,75 +100,12 @@ export type CardPaddingSize = 'none' | 'small' | 'medium' | 'large';
 export type CardVariant = 'default' | 'elevated' | 'outlined';
 
 /**
- * CSS style properties without React dependency
+ * Re-export React types for components that need them
  */
-export type CSSStyleProperties = Record<string, string | number | undefined>;
-
-/**
- * Mouse event type without React dependency
- */
-export type MouseEvent = Event & {
-  button: number;
-  buttons: number;
-  clientX: number;
-  clientY: number;
-  ctrlKey: boolean;
-  shiftKey: boolean;
-  altKey: boolean;
-  metaKey: boolean;
-};
-
-/**
- * HTML element type without React dependency
- */
-export type ElementType = string;
-
-/**
- * React-compatible CSS Properties type
- */
-export type ReactCSSProperties = Record<string, string | number | undefined>;
-
-/**
- * React-compatible ElementType
- */
-export type ReactElementType = string | Record<string, unknown>;
-
-/**
- * React-compatible MouseEvent for button clicks
- */
-export type ReactMouseEvent = Event & {
-  currentTarget: unknown;
-  target: unknown;
-  button: number;
-  buttons: number;
-  clientX: number;
-  clientY: number;
-  ctrlKey: boolean;
-  shiftKey: boolean;
-  altKey: boolean;
-  metaKey: boolean;
-  preventDefault: () => void;
-  stopPropagation: () => void;
-};
-
-/**
- * React-compatible ReactNode type for children
- */
-export type ReactNode = string | number | boolean | null | undefined | unknown;
-
-/**
- * React-compatible KeyboardEvent
- */
-export type ReactKeyboardEvent = {
-  currentTarget: unknown;
-  target: unknown;
-  key: string;
-  keyCode: number;
-  which: number;
-  ctrlKey: boolean;
-  shiftKey: boolean;
-  altKey: boolean;
-  metaKey: boolean;
-  preventDefault: () => void;
-  stopPropagation: () => void;
-};
+export type {
+  CSSProperties,
+  KeyboardEvent,
+  MouseEvent,
+  ElementType,
+  ReactNode,
+} from 'react';

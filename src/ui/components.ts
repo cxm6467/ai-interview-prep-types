@@ -10,17 +10,13 @@ import type {
   ExtendedTextVariant,
   ExtendedTextColor,
   FileTypeMappings,
-  StyleProperties,
   CardPaddingSize,
   CardVariant,
-  CSSStyleProperties,
-  MouseEvent,
   ElementType,
-  ReactCSSProperties,
-  ReactMouseEvent,
-  ReactElementType,
+  CSSProperties,
+  KeyboardEvent,
+  MouseEvent,
   ReactNode,
-  ReactKeyboardEvent,
 } from './types';
 
 /**
@@ -244,45 +240,50 @@ export interface AppFileUploadProps {
 }
 
 /**
- * Enhanced button component props
+ * Enhanced button component props with proper ARIA support and event handlers
  */
 export interface AppButtonProps {
   /** Button content */
-  children?: unknown;
+  children?: ReactNode;
   /** Button variant */
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'tertiary';
   /** Button size */
   size?: 'sm' | 'md' | 'lg' | 'small' | 'medium' | 'large';
-  /** Whether button is disabled */
+  /** Whether the button is disabled */
   disabled?: boolean;
-  /** Whether button is in loading state */
+  /** Whether the button is in loading state */
   loading?: boolean;
-  /** Whether button spans full width */
+  /** Whether the button should take full width of its container */
   fullWidth?: boolean;
-  /** Button type */
+  /** HTML button type */
   type?: 'button' | 'submit' | 'reset';
-  /** Additional CSS classes */
+  /** Additional CSS class names */
   className?: string;
-  /** Inline styles object */
-  style?: ReactCSSProperties;
-  /** Accessibility role */
+  /** Inline styles */
+  style?: CSSProperties;
+
+  // ARIA attributes
   role?: string;
-  /** Tooltip title */
   title?: string;
-  /** Tab index */
   tabIndex?: number;
-  /** ARIA selected state */
-  'aria-selected'?: boolean;
-  /** ARIA controls reference */
+  'aria-selected'?: boolean | 'true' | 'false';
   'aria-controls'?: string;
-  /** ARIA label */
   'aria-label'?: string;
-  /** ARIA labelledby reference */
   'aria-labelledby'?: string;
-  /** Click handler */
-  onClick?: (event: ReactMouseEvent) => void;
-  /** Keyboard event handler */
-  onKeyDown?: (event: ReactKeyboardEvent) => void;
+  'aria-expanded'?: boolean | 'true' | 'false';
+  'aria-haspopup'?:
+    | boolean
+    | 'true'
+    | 'false'
+    | 'menu'
+    | 'listbox'
+    | 'tree'
+    | 'grid'
+    | 'dialog';
+
+  // Event handlers
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  onKeyDown?: (event: KeyboardEvent<HTMLButtonElement>) => void;
 }
 
 /**
@@ -338,19 +339,27 @@ export interface AppTextProps {
   /** Additional CSS classes */
   className?: string;
   /** HTML element type */
-  as?: ReactElementType;
+  as?: ElementType;
 }
 
 /**
  * Skill bubble component props
+ *
+ * @example
+ * // Usage with children
+ * <AppSkillBubble variant="success">React</AppSkillBubble>
+ *
+ * @example
+ * // Usage with skill prop (legacy)
+ * <AppSkillBubble skill="TypeScript" variant="warning" />
  */
 export interface AppSkillBubbleProps {
-  /** Content to display inside the skill bubble */
-  children: ReactNode;
-  /** Visual variant for the skill bubble */
-  variant?: 'success' | 'warning';
-  /** Additional CSS classes */
-  className?: string;
-  /** Skill name or identifier */
+  /** The skill text to display (alternative to children) */
   skill?: string;
+  /** Visual variant of the bubble */
+  variant?: 'success' | 'warning';
+  /** Additional CSS class names */
+  className?: string;
+  /** The content of the bubble (alternative to skill prop) */
+  children?: ReactNode;
 }

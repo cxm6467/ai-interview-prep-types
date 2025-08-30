@@ -15,7 +15,8 @@
     "Marasco",
     "multimodal",
     "cand",
-    "labelledby"
+    "labelledby",
+    "haspopup"
   ],
   "ignorePaths": ["node_modules/**", "dist/**", "*.map", "package-lock.json"],
   "ignoreWords": ["NSIRD", "screencaptureui"],
