@@ -26,8 +26,15 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist/",
+    "src/",
+    "README.md",
+    "CHANGELOG.md"
+  ],
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf dist && tsc",
+    "prepublishOnly": "npm run build",
     "ci": "npm run build && npm run format:check && npm run spellcheck",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
