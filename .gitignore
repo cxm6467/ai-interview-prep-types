@@ -1,5 +1,3 @@
 node_modules
-<<<<<<< HEAD
 dist
-=======
->>>>>>> 5b7f158394e9d04a554811e3e3c4792f08823b9f
+docs/*
