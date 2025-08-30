@@ -24,7 +24,8 @@
   "license": "ISC",
   "author": "Chris Marasco (github.com/cxm6467)",
   "type": "module",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "ci": "npm run build && npm run format:check && npm run spellcheck",
