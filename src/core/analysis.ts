@@ -6,8 +6,6 @@ import { AnalysisComponent } from './enums';
 export interface ATSScore {
   /** Numerical score from 0-100 indicating ATS compatibility */
   score: number;
-  /** General feedback about the resume's ATS performance */
-  feedback: string;
   /** List of identified strengths in the resume */
   strengths: string[];
   /** List of areas for improvement */
@@ -16,6 +14,8 @@ export interface ATSScore {
   keywordMatches: string[];
   /** Important keywords that are missing from the resume */
   missingKeywords: string[];
+  /** Feedback that is optional */
+  feedback?: string;
 }
 
 /**
