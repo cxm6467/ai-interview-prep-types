@@ -2,6 +2,18 @@ import type { AnalysisResult, PartialAnalysisResult } from './analysis';
 import { AnalysisPhase } from './enums';
 
 /**
+ * Error information for analysis operations
+ */
+export interface AnalysisError {
+  /** Error code */
+  code: string;
+  /** Error message */
+  message: string;
+  /** Additional error details */
+  details?: string;
+}
+
+/**
  * Progress tracking for analysis operations
  */
 export interface AnalysisProgress {
@@ -18,14 +30,7 @@ export interface AnalysisProgress {
   /** Estimated time remaining in seconds */
   estimatedTimeRemaining?: number;
   /** Error information if the analysis failed */
-  error?: {
-    /** Error code */
-    code: string;
-    /** Error message */
-    message: string;
-    /** Additional error details */
-    details?: string;
-  };
+  error?: AnalysisError;
 }
 
 /**
@@ -61,12 +66,5 @@ export interface StoredAnalysisResult {
   /** Total processing time in milliseconds */
   processingTime?: number;
   /** Error information if the analysis failed */
-  error?: {
-    /** Error code */
-    code: string;
-    /** Error message */
-    message: string;
-    /** Additional error details */
-    details?: string;
-  };
+  error?: AnalysisError;
 }

@@ -1,4 +1,4 @@
-import { AnalysisComponent } from './enums';
+import { AnalysisComponent } from '../enums';
 
 /**
  * Represents an Applicant Tracking System (ATS) score for a resume
@@ -21,7 +21,7 @@ export interface ATSScore {
 /**
  * Represents an interview question with its suggested answer
  */
-export interface Question {
+export interface InterviewQuestion {
   /** The interview question text */
   question: string;
   /** Suggested answer or talking points for the question */
@@ -45,9 +45,9 @@ export interface AnalysisResult {
   /** ATS compatibility score and feedback */
   atsScore: ATSScore;
   /** Technical interview questions relevant to the role */
-  technicalQuestions: Question[];
+  technicalQuestions: InterviewQuestion[];
   /** Behavioral interview questions */
-  behavioralQuestions: Question[];
+  behavioralQuestions: InterviewQuestion[];
   /** Suggested presentation topics for the interview */
   presentationTopics: PresentationTopic[];
   /** Questions the candidate should ask the interviewer */
@@ -66,14 +66,4 @@ export interface PartialAnalysisResult extends Partial<AnalysisResult> {
   requestedComponents: AnalysisComponent[];
   /** Components that are actually included in this result */
   includedComponents: AnalysisComponent[];
-}
-
-/**
- * Request body for analysis API endpoints
- */
-export interface RequestBody {
-  /** The candidate's resume text */
-  resumeText: string;
-  /** The job description to analyze against */
-  jobDescription: string;
 }
