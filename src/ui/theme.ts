@@ -151,6 +151,26 @@ export interface AppTheme extends Omit<Theme, 'name'> {
 }
 
 /**
+ * Simplified theme interface for component use without full Theme properties
+ */
+export interface SimpleAppTheme {
+  /** Unique identifier for the theme */
+  id: ExtendedThemeType;
+  /** Theme identifier matching base Theme */
+  name: ExtendedThemeType;
+  /** Human-readable display name of the theme (e.g., "Ocean Blue") */
+  displayName: string;
+  /** Human-readable description of the theme */
+  description: string;
+  /** Theme category for organization */
+  category: 'standard' | 'accessible' | 'popular';
+  /** CSS class name to apply for styling */
+  className: string;
+  /** Whether this theme meets accessibility standards */
+  accessible: boolean;
+}
+
+/**
  * Theme constants to avoid magic strings
  */
 export const THEME_VALUES = {

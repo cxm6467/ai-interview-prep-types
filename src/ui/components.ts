@@ -16,6 +16,11 @@ import type {
   CSSStyleProperties,
   MouseEvent,
   ElementType,
+  ReactCSSProperties,
+  ReactMouseEvent,
+  ReactElementType,
+  ReactNode,
+  ReactKeyboardEvent,
 } from './types';
 
 /**
@@ -245,21 +250,39 @@ export interface AppButtonProps {
   /** Button content */
   children?: unknown;
   /** Button variant */
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'tertiary';
   /** Button size */
   size?: 'sm' | 'md' | 'lg' | 'small' | 'medium' | 'large';
   /** Whether button is disabled */
   disabled?: boolean;
   /** Whether button is in loading state */
   loading?: boolean;
+  /** Whether button spans full width */
+  fullWidth?: boolean;
+  /** Button type */
+  type?: 'button' | 'submit' | 'reset';
   /** Additional CSS classes */
   className?: string;
   /** Inline styles object */
-  style?: CSSStyleProperties;
+  style?: ReactCSSProperties;
   /** Accessibility role */
   role?: string;
+  /** Tooltip title */
+  title?: string;
+  /** Tab index */
+  tabIndex?: number;
+  /** ARIA selected state */
+  'aria-selected'?: boolean;
+  /** ARIA controls reference */
+  'aria-controls'?: string;
+  /** ARIA label */
+  'aria-label'?: string;
+  /** ARIA labelledby reference */
+  'aria-labelledby'?: string;
   /** Click handler */
-  onClick?: (event: MouseEvent) => void;
+  onClick?: (event: ReactMouseEvent) => void;
+  /** Keyboard event handler */
+  onKeyDown?: (event: ReactKeyboardEvent) => void;
 }
 
 /**
@@ -314,6 +337,20 @@ export interface AppTextProps {
   weight?: 'light' | 'normal' | 'medium' | 'bold';
   /** Additional CSS classes */
   className?: string;
-  /** HTML element type as string */
-  as?: ElementType;
+  /** HTML element type */
+  as?: ReactElementType;
+}
+
+/**
+ * Skill bubble component props
+ */
+export interface AppSkillBubbleProps {
+  /** Content to display inside the skill bubble */
+  children: ReactNode;
+  /** Visual variant for the skill bubble */
+  variant?: 'success' | 'warning';
+  /** Additional CSS classes */
+  className?: string;
+  /** Skill name or identifier */
+  skill?: string;
 }
