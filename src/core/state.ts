@@ -8,6 +8,7 @@ import type {
   PresentationTopic,
 } from './interview';
 import type { ATSScore } from './analysis';
+import type { ExtendedThemeType } from '../ui';
 
 /**
  * Application error state
@@ -115,5 +116,5 @@ export interface ExtendedAppState {
   /** Current application step/page */
   currentStep: AppStep;
   /** Current theme mode */
-  theme: SimpleTheme;
+  theme: ExtendedThemeType;
 }

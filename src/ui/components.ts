@@ -247,7 +247,7 @@ export interface AppButtonProps {
   /** Button variant */
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   /** Button size */
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'small' | 'medium' | 'large';
   /** Whether button is disabled */
   disabled?: boolean;
   /** Whether button is in loading state */
@@ -256,6 +256,8 @@ export interface AppButtonProps {
   className?: string;
   /** Inline styles object */
   style?: CSSStyleProperties;
+  /** Accessibility role */
+  role?: string;
   /** Click handler */
   onClick?: (event: MouseEvent) => void;
 }
@@ -294,9 +296,18 @@ export interface AppTextProps {
     | 'body1'
     | 'body2'
     | 'caption'
-    | 'overline';
+    | 'overline'
+    | 'small';
   /** Text color */
-  color?: 'primary' | 'secondary' | 'error' | 'warning' | 'success' | 'info';
+  color?:
+    | 'primary'
+    | 'secondary'
+    | 'error'
+    | 'warning'
+    | 'success'
+    | 'info'
+    | 'accent'
+    | 'tertiary';
   /** Text alignment */
   align?: 'left' | 'center' | 'right';
   /** Font weight */
