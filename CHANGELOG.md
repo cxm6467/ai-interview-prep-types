@@ -5,6 +5,37 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-08-30
+
+### Added
+
+- **Enhanced JSDoc Documentation**: Comprehensive documentation with usage examples for all types
+  - Added detailed descriptions for all interfaces and properties
+  - Included practical code examples for better developer experience
+  - Enhanced parameter documentation with expected formats and use cases
+- **Latest OpenAI Models Support**: Updated AI model definitions to include 2025 models
+  - Added GPT-4o and GPT-4o mini for multimodal capabilities
+  - Added GPT-4.1, GPT-4.1 mini, and GPT-4.1 nano for enhanced performance
+  - Added GPT-5 with built-in reasoning capabilities
+  - Added o3-mini and o4-mini reasoning models
+  - Marked legacy models (GPT-3.5, GPT-4) with deprecation notes
+- **UI Type Organization**: Extracted inline types to dedicated type files
+  - Created `src/ui/types.ts` for core UI type definitions
+  - Separated `ComponentSize`, `ComponentVariant`, `TextAlign`, `TextColor`, `TextVariant`, and `ButtonType`
+  - Improved type reusability and maintainability
+
+### Changed
+
+- **Type Extraction**: Moved inline union types to proper type definitions for better reusability
+- **Component Props**: Updated UI component interfaces to use extracted common types
+- **JSDoc Quality**: Enhanced all interface documentation with practical examples and detailed descriptions
+
+### Improved
+
+- **Developer Experience**: Better IntelliSense and documentation in IDEs
+- **Type Safety**: More explicit type definitions reduce ambiguity
+- **Documentation Coverage**: All public types now have comprehensive documentation
+
 ## [1.0.0] - 2025-08-30
 
 ### Added

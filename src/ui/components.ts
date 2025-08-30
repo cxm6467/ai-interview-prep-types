@@ -1,18 +1,11 @@
-/**
- * Size variants for UI components
- */
-export type ComponentSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-
-/**
- * Color variants for UI components
- */
-export type ComponentVariant =
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'warning'
-  | 'error'
-  | 'info';
+import type {
+  ComponentSize,
+  ComponentVariant,
+  TextAlign,
+  TextColor,
+  TextVariant,
+  ButtonType,
+} from './types';
 
 /**
  * Props for file upload component
@@ -65,7 +58,7 @@ export interface ButtonProps extends BaseButtonProps {
   /** Button content */
   children?: unknown;
   /** HTML button type */
-  type?: 'button' | 'submit' | 'reset';
+  type?: ButtonType;
 }
 
 /**
@@ -97,28 +90,11 @@ export interface TextProps {
   /** Text content */
   children?: unknown;
   /** Text variant/style */
-  variant?:
-    | 'h1'
-    | 'h2'
-    | 'h3'
-    | 'h4'
-    | 'h5'
-    | 'h6'
-    | 'body1'
-    | 'body2'
-    | 'caption'
-    | 'overline';
+  variant?: TextVariant;
   /** Text color */
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'warning'
-    | 'error'
-    | 'info'
-    | 'inherit';
+  color?: TextColor;
   /** Text alignment */
-  align?: 'left' | 'center' | 'right' | 'justify';
+  align?: TextAlign;
   /** Whether text should wrap */
   noWrap?: boolean;
   /** Whether text should be truncated with ellipsis */

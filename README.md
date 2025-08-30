@@ -14,9 +14,11 @@ This package provides a complete suite of TypeScript type definitions for AI-pow
 - **Modular Architecture**: Types organized by domain (core, UI, external integrations)
 - **Complete Type Coverage**: Interview questions, resume data, job descriptions, and more
 - **ATS Integration**: Types for Applicant Tracking System compatibility scoring
-- **UI Components**: Comprehensive component prop definitions
+- **UI Components**: Comprehensive component prop definitions with extracted common types
 - **State Management**: Application state and progress tracking interfaces
 - **External Integrations**: PDF.js and other third-party service types
+- **Enhanced JSDoc**: Comprehensive documentation with examples for all types
+- **Latest OpenAI Models**: Support for GPT-4o, GPT-4.1, GPT-5, and reasoning models
 
 ## Installation
 
@@ -91,9 +93,10 @@ ai-interview-prep-types/
 │   │   ├── progress.ts         # Progress tracking
 │   │   └── server.ts           # Server response types
 │   ├── ui/                      # UI component types
-│   │   ├── components.ts       # Component prop definitions
-│   │   ├── theme.ts           # Theme and styling types
-│   │   └── index.ts           # UI module exports
+│   │   ├── types.ts           # Core UI type definitions
+│   │   ├── components.ts      # Component prop definitions
+│   │   ├── theme.ts          # Theme and styling types
+│   │   └── index.ts          # UI module exports
 │   ├── external/               # External service integrations
 │   │   ├── pdfjs.ts          # PDF.js integration types
 │   │   └── index.ts          # External module exports

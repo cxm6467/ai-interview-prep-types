@@ -12,7 +12,9 @@
     "husky",
     "prettier",
     "devDependencies",
-    "Marasco"
+    "Marasco",
+    "multimodal",
+    "cand"
   ],
   "ignorePaths": ["node_modules/**", "dist/**", "*.map", "package-lock.json"],
   "ignoreWords": ["NSIRD", "screencaptureui"],

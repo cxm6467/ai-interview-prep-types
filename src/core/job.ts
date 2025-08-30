@@ -1,47 +1,68 @@
 /**
  * Represents how well a candidate's skill matches a job requirement
+ *
+ * @example
+ * ```typescript
+ * const skillMatch: SkillMatch = {
+ *   skill: "React",
+ *   importance: "required",
+ *   hasSkill: true
+ * };
+ * ```
  */
 export interface SkillMatch {
-  /** The skill or technology name */
+  /** The name of the skill or technology being evaluated */
   skill: string;
-  /** Whether this skill is required or preferred */
+  /** The importance level of this skill for the role */
   importance: 'required' | 'preferred' | 'nice-to-have';
-  /** How well the candidate matches this skill (0-100) */
-  matchScore: number;
   /** Whether the candidate has experience with this skill */
-  candidateHasSkill: boolean;
-  /** Years of experience the candidate has with this skill */
-  yearsExperience?: number;
+  hasSkill: boolean;
 }
 
 /**
- * Structured job description data
+ * Structured job description data extracted from job postings
+ *
+ * @example
+ * ```typescript
+ * const job: JobDescription = {
+ *   title: "Senior Frontend Developer",
+ *   company: "Tech Innovations Inc.",
+ *   location: "San Francisco, CA",
+ *   employmentType: "full-time",
+ *   salaryRange: "$120,000 - $150,000",
+ *   description: "We are seeking a skilled frontend developer...",
+ *   requirements: ["5+ years React experience", "Strong JavaScript skills"],
+ *   responsibilities: ["Build user interfaces", "Collaborate with design team"],
+ *   requiredSkills: ["React", "JavaScript", "CSS"],
+ *   experienceYears: 5
+ * };
+ * ```
  */
 export interface JobDescription {
-  /** Job title */
+  /** The job title or position name */
   title: string;
-  /** Company name */
+  /** Name of the hiring company */
   company: string;
-  /** Job location */
+  /** Work location (optional, may be remote) */
   location?: string;
-  /** Employment type (full-time, part-time, contract, etc.) */
+  /** Type of employment (full-time, part-time, contract, etc.) */
   employmentType?: string;
-  /** Salary range if provided */
+  /** Salary or compensation range if specified */
   salaryRange?: string;
-  /** Job overview and description */
+  /** Detailed job overview and description */
   description: string;
-  /** List of required qualifications */
+  /** Array of mandatory qualifications and requirements */
   requirements: string[];
-  /** List of preferred qualifications */
+  /** Array of preferred but not required qualifications */
   preferredQualifications?: string[];
-  /** List of responsibilities */
+  /** Array of key job responsibilities and duties */
   responsibilities: string[];
-  /** Required technical skills */
+  /** Array of required technical skills and technologies */
   requiredSkills: string[];
-  /** Preferred technical skills */
+  /** Array of preferred technical skills and technologies */
   preferredSkills?: string[];
-  /** Years of experience required */
+  /** Minimum years of relevant experience required */
   experienceYears?: number;
-  /** Education requirements */
+  /** Educational requirements or preferences */
   educationRequirements?: string[];
 }
