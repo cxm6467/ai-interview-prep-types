@@ -1,6 +1,6 @@
 {
   "name": "@cxm6467/ai-interview-prep-types",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Comprehensive TypeScript type definitions for AI-powered interview preparation applications",
   "keywords": [
     "typescript",
