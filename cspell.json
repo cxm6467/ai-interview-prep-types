@@ -14,7 +14,8 @@
     "devDependencies",
     "Marasco",
     "multimodal",
-    "cand"
+    "cand",
+    "labelledby"
   ],
   "ignorePaths": ["node_modules/**", "dist/**", "*.map", "package-lock.json"],
   "ignoreWords": ["NSIRD", "screencaptureui"],

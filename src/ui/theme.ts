@@ -13,6 +13,17 @@ export type ThemeType =
   | 'pink';
 
 /**
+ * Extended theme types that include application-specific theme variants
+ */
+export type ExtendedThemeType =
+  | ThemeType
+  | 'indigo'
+  | 'high-contrast'
+  | 'low-contrast'
+  | 'warm'
+  | 'cool';
+
+/**
  * Color palette for themes
  */
 export interface ThemeColors {
@@ -114,4 +125,20 @@ export interface Theme {
   borderRadius: ThemeBorderRadius;
   /** Shadow values */
   shadows: ThemeShadows;
+}
+
+/**
+ * Application theme configuration that extends the base Theme
+ */
+export interface AppTheme extends Theme {
+  /** Unique identifier for the theme */
+  id: ExtendedThemeType;
+  /** Human-readable description of the theme */
+  description: string;
+  /** Theme category for organization */
+  category: 'standard' | 'accessible' | 'popular';
+  /** CSS class name to apply for styling */
+  className: string;
+  /** Whether this theme meets accessibility standards */
+  accessible: boolean;
 }

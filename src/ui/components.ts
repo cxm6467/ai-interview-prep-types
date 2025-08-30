@@ -5,6 +5,14 @@ import type {
   TextColor,
   TextVariant,
   ButtonType,
+  ExtendedComponentVariant,
+  ExtendedComponentSize,
+  ExtendedTextVariant,
+  ExtendedTextColor,
+  FileTypeMappings,
+  StyleProperties,
+  CardPaddingSize,
+  CardVariant,
 } from './types';
 
 /**
@@ -203,4 +211,106 @@ export interface TextProps {
   animated?: boolean;
   /** Text transformation */
   transform?: TextTransform;
+}
+
+/**
+ * Enhanced file upload component props
+ */
+export interface AppFileUploadProps {
+  /** Drag and drop callback */
+  onDrop: (files: File[]) => void;
+  /** Currently selected file */
+  file?: File | null;
+  /** Accepted file types mapping */
+  accept?: FileTypeMappings;
+  /** Maximum number of files */
+  maxFiles?: number;
+  /** Label text */
+  label?: string;
+  /** Description text */
+  description?: string;
+  /** CSS class names */
+  className?: string;
+  /** Child components */
+  children?: unknown;
+}
+
+/**
+ * Enhanced button component props
+ */
+export interface AppButtonProps {
+  /** Button content */
+  children: unknown;
+  /** Click handler */
+  onClick?: () => void;
+  /** Extended variant options */
+  variant?: ExtendedComponentVariant;
+  /** Extended size options */
+  size?: ExtendedComponentSize;
+  /** Full width flag */
+  fullWidth?: boolean;
+  /** Disabled state */
+  disabled?: boolean;
+  /** Loading state */
+  loading?: boolean;
+  /** Icon element */
+  icon?: unknown;
+  /** CSS class names */
+  className?: string;
+  /** Button type */
+  type?: ButtonType;
+  /** Inline styles */
+  style?: StyleProperties;
+  /** Accessibility role */
+  role?: string;
+  /** ARIA selected state */
+  'aria-selected'?: boolean;
+  /** ARIA controls reference */
+  'aria-controls'?: string;
+  /** ARIA label */
+  'aria-label'?: string;
+  /** ARIA labelledby reference */
+  'aria-labelledby'?: string;
+  /** Tab index */
+  tabIndex?: number;
+  /** Tooltip title */
+  title?: string;
+  /** Keyboard event handler */
+  onKeyDown?: (event: unknown) => void;
+}
+
+/**
+ * Enhanced card component props
+ */
+export interface AppCardProps {
+  /** Card content */
+  children: unknown;
+  /** CSS class names */
+  className?: string;
+  /** Padding size options */
+  padding?: CardPaddingSize;
+  /** Card style variant */
+  variant?: CardVariant;
+  /** Click handler */
+  onClick?: () => void;
+}
+
+/**
+ * Enhanced text component props
+ */
+export interface AppTextProps {
+  /** Text content */
+  children: unknown;
+  /** Extended text variant */
+  variant?: ExtendedTextVariant;
+  /** Extended text color */
+  color?: ExtendedTextColor;
+  /** Text alignment */
+  align?: TextAlign;
+  /** Font weight */
+  weight?: FontWeight;
+  /** CSS class names */
+  className?: string;
+  /** HTML element type */
+  as?: string;
 }

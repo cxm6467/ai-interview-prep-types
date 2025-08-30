@@ -4,7 +4,7 @@ import type { Theme, ThemeType } from '../ui';
 /**
  * Extended theme configuration with app-specific properties
  */
-export interface AppTheme extends Theme {
+export interface CoreAppTheme extends Theme {
   /** App-specific branding colors */
   brand: {
     primary: string;
@@ -43,7 +43,7 @@ export type AppThemeType = ThemeType | 'auto' | 'system' | 'high-contrast';
  */
 export interface AppConfig {
   /** Current theme configuration */
-  theme: AppTheme;
+  theme: CoreAppTheme;
   /** Selected theme type */
   themeType: AppThemeType;
   /** Application version */

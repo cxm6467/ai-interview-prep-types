@@ -54,3 +54,52 @@ export type TextVariant =
  * HTML button types
  */
 export type ButtonType = 'button' | 'submit' | 'reset';
+
+/**
+ * Extended component variants that include app-specific options
+ */
+export type ExtendedComponentVariant = ComponentVariant | 'ghost' | 'tertiary';
+
+/**
+ * Extended component sizes that include app-specific options
+ */
+export type ExtendedComponentSize =
+  | ComponentSize
+  | 'small'
+  | 'medium'
+  | 'large';
+
+/**
+ * Extended text variants that include app-specific options
+ */
+export type ExtendedTextVariant =
+  | TextVariant
+  | 'body'
+  | 'small'
+  | 'caption'
+  | 'h4';
+
+/**
+ * Extended text colors that include app-specific options
+ */
+export type ExtendedTextColor = TextColor | 'tertiary' | 'accent';
+
+/**
+ * File type mappings for accept attribute
+ */
+export type FileTypeMappings = Record<string, string[]>;
+
+/**
+ * CSS style properties
+ */
+export type StyleProperties = Record<string, unknown>;
+
+/**
+ * Card padding size options
+ */
+export type CardPaddingSize = 'none' | 'small' | 'medium' | 'large';
+
+/**
+ * Card variant options
+ */
+export type CardVariant = 'default' | 'elevated' | 'outlined';
