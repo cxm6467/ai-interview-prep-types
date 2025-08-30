@@ -1,1 +1,1 @@
-export * from './pdfjs';
+export * from './pdfjs.js';

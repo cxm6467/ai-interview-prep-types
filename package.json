@@ -1,6 +1,6 @@
 {
   "name": "@cxm6467/ai-interview-prep-types",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "Comprehensive TypeScript type definitions for AI-powered interview preparation applications",
   "keywords": [
     "typescript",
@@ -26,6 +26,24 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./core": {
+      "import": "./dist/core/index.js",
+      "types": "./dist/core/index.d.ts"
+    },
+    "./ui": {
+      "import": "./dist/ui/index.js",
+      "types": "./dist/ui/index.d.ts"
+    },
+    "./external": {
+      "import": "./dist/external/index.js",
+      "types": "./dist/external/index.d.ts"
+    }
+  },
   "files": [
     "dist/",
     "src/",
