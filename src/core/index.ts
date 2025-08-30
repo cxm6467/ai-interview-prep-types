@@ -12,6 +12,7 @@
  */
 
 export * from './analysis';
+export * from './cache';
 export * from './enums';
 export * from './progress';
 export * from './server';
@@ -20,3 +21,4 @@ export * from './job';
 export * from './interview';
 export * from './state';
 export * from './app';
+export * from './utils';

@@ -75,6 +75,44 @@ export interface PresentationTopic {
 }
 
 /**
+ * Technical interview question with specific type constraint
+ *
+ * @example
+ * ```typescript
+ * const techQuestion: TechnicalQuestion = {
+ *   id: "tech-001",
+ *   question: "Explain the difference between let and const in JavaScript",
+ *   type: "technical",
+ *   suggestedAnswer: "const creates immutable bindings...",
+ *   tips: ["Use examples", "Mention block scoping"]
+ * };
+ * ```
+ */
+export interface TechnicalQuestion extends InterviewQuestion {
+  /** Must be 'technical' for technical questions */
+  type: 'technical';
+}
+
+/**
+ * Behavioral interview question with specific type constraint
+ *
+ * @example
+ * ```typescript
+ * const behavioralQuestion: BehavioralQuestion = {
+ *   id: "behavioral-001",
+ *   question: "Tell me about a time when you had to work under pressure",
+ *   type: "behavioral",
+ *   suggestedAnswer: "Use the STAR method...",
+ *   tips: ["Be specific", "Focus on your actions", "Quantify results"]
+ * };
+ * ```
+ */
+export interface BehavioralQuestion extends InterviewQuestion {
+  /** Must be 'behavioral' for behavioral questions */
+  type: 'behavioral';
+}
+
+/**
  * Questions that a candidate should ask during the interview to demonstrate interest and gather information
  *
  * @example

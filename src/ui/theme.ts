@@ -1,5 +1,5 @@
 /**
- * Available theme variants
+ * Available theme variants for basic theme system
  */
 export type ThemeType =
   | 'light'
@@ -13,14 +13,12 @@ export type ThemeType =
   | 'pink';
 
 /**
- * Extended theme types that include application-specific theme variants
+ * Extended theme types that include application-specific theme variants and accessibility options
+ * This is a superset of ThemeType with additional specialized themes
  */
 export type ExtendedThemeType =
-  | 'light'
-  | 'dark'
-  | 'blue'
+  | ThemeType
   | 'indigo'
-  | 'green'
   | 'warm'
   | 'cool'
   | 'high-contrast'
@@ -152,6 +150,28 @@ export interface AppTheme extends Omit<Theme, 'name'> {
 
 /**
  * Simplified theme interface for component use without full Theme properties
+ *
+ * Use this type for theme arrays in components like ThemeSelector where you need
+ * theme objects with metadata (not just string values).
+ *
+ * @example
+ * ```typescript
+ * // CORRECT: Use SimpleAppTheme[] for theme selector arrays
+ * const themes: SimpleAppTheme[] = [
+ *   {
+ *     id: 'light',
+ *     name: 'light',
+ *     displayName: 'Light',
+ *     description: 'Clean light theme',
+ *     category: 'standard',
+ *     className: 'theme-light',
+ *     accessible: true
+ *   }
+ * ];
+ *
+ * // INCORRECT: Don't use ExtendedThemeType[] for objects
+ * const wrongThemes: ExtendedThemeType[] = [...]; // This would be for strings only
+ * ```
  */
 export interface SimpleAppTheme {
   /** Unique identifier for the theme */
@@ -171,14 +191,26 @@ export interface SimpleAppTheme {
 }
 
 /**
- * Theme constants to avoid magic strings
+ * Basic theme constants for ThemeType
  */
 export const THEME_VALUES = {
   LIGHT: 'light',
   DARK: 'dark',
   BLUE: 'blue',
-  INDIGO: 'indigo',
   GREEN: 'green',
+  PURPLE: 'purple',
+  ORANGE: 'orange',
+  RED: 'red',
+  TEAL: 'teal',
+  PINK: 'pink',
+} as const;
+
+/**
+ * Extended theme constants for ExtendedThemeType
+ */
+export const EXTENDED_THEME_VALUES = {
+  ...THEME_VALUES,
+  INDIGO: 'indigo',
   WARM: 'warm',
   COOL: 'cool',
   HIGH_CONTRAST: 'high-contrast',
@@ -197,4 +229,28 @@ export const SIMPLE_THEME_VALUES = {
  * Default theme values
  */
 export const DEFAULT_THEME = SIMPLE_THEME_VALUES.DARK as 'light' | 'dark';
-export const DEFAULT_EXTENDED_THEME = THEME_VALUES.DARK as ExtendedThemeType;
+export const DEFAULT_EXTENDED_THEME =
+  EXTENDED_THEME_VALUES.DARK as ExtendedThemeType;
+
+/**
+ * Type aliases for commonly confused types to improve clarity
+ */
+
+/** Use this for arrays of theme string values */
+export type ThemeStringArray = ExtendedThemeType[];
+
+/** Use this for arrays of theme objects with metadata */
+export type ThemeObjectArray = SimpleAppTheme[];
+
+/**
+ * Type guard to check if a value is a valid ExtendedThemeType
+ *
+ * @param value - The value to check
+ * @returns True if the value is a valid ExtendedThemeType
+ */
+export function isValidThemeType(value: unknown): value is ExtendedThemeType {
+  return (
+    typeof value === 'string' &&
+    Object.values(EXTENDED_THEME_VALUES).includes(value as ExtendedThemeType)
+  );
+}
