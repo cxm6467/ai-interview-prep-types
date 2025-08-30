@@ -13,6 +13,9 @@ import type {
   StyleProperties,
   CardPaddingSize,
   CardVariant,
+  CSSStyleProperties,
+  MouseEvent,
+  ElementType,
 } from './types';
 
 /**
@@ -240,43 +243,21 @@ export interface AppFileUploadProps {
  */
 export interface AppButtonProps {
   /** Button content */
-  children: unknown;
-  /** Click handler */
-  onClick?: () => void;
-  /** Extended variant options */
-  variant?: ExtendedComponentVariant;
-  /** Extended size options */
-  size?: ExtendedComponentSize;
-  /** Full width flag */
-  fullWidth?: boolean;
-  /** Disabled state */
+  children?: unknown;
+  /** Button variant */
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  /** Button size */
+  size?: 'sm' | 'md' | 'lg';
+  /** Whether button is disabled */
   disabled?: boolean;
-  /** Loading state */
+  /** Whether button is in loading state */
   loading?: boolean;
-  /** Icon element */
-  icon?: unknown;
-  /** CSS class names */
+  /** Additional CSS classes */
   className?: string;
-  /** Button type */
-  type?: ButtonType;
-  /** Inline styles */
-  style?: StyleProperties;
-  /** Accessibility role */
-  role?: string;
-  /** ARIA selected state */
-  'aria-selected'?: boolean;
-  /** ARIA controls reference */
-  'aria-controls'?: string;
-  /** ARIA label */
-  'aria-label'?: string;
-  /** ARIA labelledby reference */
-  'aria-labelledby'?: string;
-  /** Tab index */
-  tabIndex?: number;
-  /** Tooltip title */
-  title?: string;
-  /** Keyboard event handler */
-  onKeyDown?: (event: unknown) => void;
+  /** Inline styles object */
+  style?: CSSStyleProperties;
+  /** Click handler */
+  onClick?: (event: MouseEvent) => void;
 }
 
 /**
@@ -300,17 +281,28 @@ export interface AppCardProps {
  */
 export interface AppTextProps {
   /** Text content */
-  children: unknown;
-  /** Extended text variant */
-  variant?: ExtendedTextVariant;
-  /** Extended text color */
-  color?: ExtendedTextColor;
+  children?: unknown;
+  /** Text variant/style */
+  variant?:
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'body'
+    | 'body1'
+    | 'body2'
+    | 'caption'
+    | 'overline';
+  /** Text color */
+  color?: 'primary' | 'secondary' | 'error' | 'warning' | 'success' | 'info';
   /** Text alignment */
-  align?: TextAlign;
+  align?: 'left' | 'center' | 'right';
   /** Font weight */
-  weight?: FontWeight;
-  /** CSS class names */
+  weight?: 'light' | 'normal' | 'medium' | 'bold';
+  /** Additional CSS classes */
   className?: string;
-  /** HTML element type */
-  as?: string;
+  /** HTML element type as string */
+  as?: ElementType;
 }

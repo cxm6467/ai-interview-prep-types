@@ -43,9 +43,19 @@ import type {
   AppState,
   AnalysisProgress,
 
-  // App-specific types
+  // Theme types and constants
   AppTheme,
-  AppThemeType,
+  ExtendedThemeType,
+  THEME_VALUES,
+  SIMPLE_THEME_VALUES,
+  DEFAULT_THEME,
+
+  // Component props
+  AppButtonProps,
+  AppTextProps,
+  AppCardProps,
+
+  // App-specific types
   RequestBody,
 
   // UI component props
@@ -183,7 +193,7 @@ const progress: AnalysisProgress = {
 ```typescript
 import type { ButtonProps, Theme } from '@cxm6467/ai-interview-prep-types';
 
-const MyButton: React.FC<ButtonProps> = ({
+const MyButton: React.FC<AppButtonProps> = ({
   variant = 'primary',
   size = 'md',
   disabled = false,
@@ -192,6 +202,44 @@ const MyButton: React.FC<ButtonProps> = ({
 }) => {
   // Component implementation
 };
+```
+
+### Theme Constants
+
+```typescript
+import {
+  DEFAULT_THEME,
+  SIMPLE_THEME_VALUES,
+  THEME_VALUES,
+  ExtendedThemeType,
+} from '@cxm6467/ai-interview-prep-types';
+
+// Use constants instead of magic strings
+const store = {
+  theme: DEFAULT_THEME,
+  toggleTheme: () =>
+    set((state) => ({
+      theme:
+        state.theme === SIMPLE_THEME_VALUES.DARK
+          ? SIMPLE_THEME_VALUES.LIGHT
+          : SIMPLE_THEME_VALUES.DARK,
+    })),
+  reset: () =>
+    set({
+      theme: DEFAULT_THEME,
+    }),
+};
+
+// Available theme constants
+THEME_VALUES.LIGHT; // 'light'
+THEME_VALUES.DARK; // 'dark'
+THEME_VALUES.BLUE; // 'blue'
+THEME_VALUES.INDIGO; // 'indigo'
+THEME_VALUES.GREEN; // 'green'
+THEME_VALUES.WARM; // 'warm'
+THEME_VALUES.COOL; // 'cool'
+THEME_VALUES.HIGH_CONTRAST; // 'high-contrast'
+THEME_VALUES.LOW_CONTRAST; // 'low-contrast'
 ```
 
 ## Development

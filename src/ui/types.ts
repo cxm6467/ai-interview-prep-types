@@ -103,3 +103,27 @@ export type CardPaddingSize = 'none' | 'small' | 'medium' | 'large';
  * Card variant options
  */
 export type CardVariant = 'default' | 'elevated' | 'outlined';
+
+/**
+ * CSS style properties without React dependency
+ */
+export type CSSStyleProperties = Record<string, string | number | undefined>;
+
+/**
+ * Mouse event type without React dependency
+ */
+export type MouseEvent = Event & {
+  button: number;
+  buttons: number;
+  clientX: number;
+  clientY: number;
+  ctrlKey: boolean;
+  shiftKey: boolean;
+  altKey: boolean;
+  metaKey: boolean;
+};
+
+/**
+ * HTML element type without React dependency
+ */
+export type ElementType = string;

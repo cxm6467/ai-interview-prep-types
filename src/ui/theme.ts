@@ -16,12 +16,15 @@ export type ThemeType =
  * Extended theme types that include application-specific theme variants
  */
 export type ExtendedThemeType =
-  | ThemeType
+  | 'light'
+  | 'dark'
+  | 'blue'
   | 'indigo'
-  | 'high-contrast'
-  | 'low-contrast'
+  | 'green'
   | 'warm'
-  | 'cool';
+  | 'cool'
+  | 'high-contrast'
+  | 'low-contrast';
 
 /**
  * Color palette for themes
@@ -130,9 +133,13 @@ export interface Theme {
 /**
  * Application theme configuration that extends the base Theme
  */
-export interface AppTheme extends Theme {
+export interface AppTheme extends Omit<Theme, 'name'> {
   /** Unique identifier for the theme */
   id: ExtendedThemeType;
+  /** Theme identifier matching base Theme */
+  name: ExtendedThemeType;
+  /** Human-readable display name of the theme (e.g., "Ocean Blue") */
+  displayName: string;
   /** Human-readable description of the theme */
   description: string;
   /** Theme category for organization */
@@ -142,3 +149,32 @@ export interface AppTheme extends Theme {
   /** Whether this theme meets accessibility standards */
   accessible: boolean;
 }
+
+/**
+ * Theme constants to avoid magic strings
+ */
+export const THEME_VALUES = {
+  LIGHT: 'light',
+  DARK: 'dark',
+  BLUE: 'blue',
+  INDIGO: 'indigo',
+  GREEN: 'green',
+  WARM: 'warm',
+  COOL: 'cool',
+  HIGH_CONTRAST: 'high-contrast',
+  LOW_CONTRAST: 'low-contrast',
+} as const;
+
+/**
+ * Simple theme constants
+ */
+export const SIMPLE_THEME_VALUES = {
+  LIGHT: 'light',
+  DARK: 'dark',
+} as const;
+
+/**
+ * Default theme values
+ */
+export const DEFAULT_THEME = SIMPLE_THEME_VALUES.DARK as 'light' | 'dark';
+export const DEFAULT_EXTENDED_THEME = THEME_VALUES.DARK as ExtendedThemeType;
