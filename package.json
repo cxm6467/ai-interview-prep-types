@@ -1,11 +1,17 @@
 {
   "name": "@cxm6467/ai-interview-prep-types",
-  "version": "0.0.2",
-  "description": "A package for types for ai interview prep types",
+  "version": "1.0.0",
+  "description": "Comprehensive TypeScript type definitions for AI-powered interview preparation applications",
   "keywords": [
-    "cxm6467",
-    "ai-interview-prep",
-    "types"
+    "typescript",
+    "types",
+    "interview",
+    "resume",
+    "ats",
+    "ai",
+    "job-search",
+    "career",
+    "interview-prep"
   ],
   "homepage": "https://github.com/cxm6467/ai-interview-prep-types#readme",
   "bugs": {

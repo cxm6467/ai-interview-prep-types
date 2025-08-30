@@ -1,9 +1,9 @@
 /**
  * Available theme variants
  */
-export type ThemeType = 
+export type ThemeType =
   | 'light'
-  | 'dark' 
+  | 'dark'
   | 'blue'
   | 'green'
   | 'purple'

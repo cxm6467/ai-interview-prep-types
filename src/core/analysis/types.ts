@@ -1,4 +1,5 @@
 import { AnalysisComponent } from '../enums';
+import type { InterviewQuestion, PresentationTopic } from '../interview';
 
 /**
  * Represents an Applicant Tracking System (ATS) score for a resume
@@ -16,26 +17,6 @@ export interface ATSScore {
   missingKeywords: string[];
   /** Feedback that is optional */
   feedback?: string;
-}
-
-/**
- * Represents an interview question with its suggested answer
- */
-export interface InterviewQuestion {
-  /** The interview question text */
-  question: string;
-  /** Suggested answer or talking points for the question */
-  answer: string;
-}
-
-/**
- * Represents a presentation topic that might be requested during an interview
- */
-export interface PresentationTopic {
-  /** The main topic or theme for the presentation */
-  topic: string;
-  /** Key points or talking points to cover in the presentation */
-  keyPoints: string[];
 }
 
 /**
