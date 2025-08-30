@@ -1,4 +1,28 @@
 /**
+ * Types of interview questions
+ */
+export type InterviewQuestionType =
+  | 'technical'
+  | 'behavioral'
+  | 'situational'
+  | 'general';
+
+/**
+ * Categories for candidate questions
+ */
+export type CandidateQuestionCategory =
+  | 'role'
+  | 'company'
+  | 'team'
+  | 'growth'
+  | 'culture';
+
+/**
+ * Interview timing stages
+ */
+export type InterviewTiming = 'early' | 'middle' | 'end' | 'any';
+
+/**
  * Represents an interview question with its suggested answer and guidance
  *
  * @example
@@ -18,7 +42,7 @@ export interface InterviewQuestion {
   /** The actual interview question text */
   question: string;
   /** Category of the interview question */
-  type: 'technical' | 'behavioral' | 'situational' | 'general';
+  type: InterviewQuestionType;
   /** Suggested response or talking points for the question (optional) */
   suggestedAnswer?: string;
   /** Array of tips for answering effectively (optional) */
@@ -60,7 +84,7 @@ export interface PresentationTopic {
  *   category: "team",
  *   question: "What does a typical day look like for someone in this role?",
  *   rationale: "Shows interest in day-to-day responsibilities and work environment",
- *   timing: "any"
+ *   timing: "early"
  * };
  * ```
  */
@@ -68,11 +92,11 @@ export interface CandidateQuestion {
   /** Unique identifier for the candidate question */
   id: string;
   /** Category or theme of the question */
-  category: 'role' | 'company' | 'team' | 'growth' | 'culture';
+  category: CandidateQuestionCategory;
   /** The actual question text that the candidate should ask */
   question: string;
   /** Explanation of why this question is valuable to ask */
   rationale: string;
   /** Which interview stage this question is most appropriate for */
-  timing: 'initial' | 'technical' | 'final' | 'any';
+  timing: InterviewTiming;
 }

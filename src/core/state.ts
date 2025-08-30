@@ -40,11 +40,16 @@ export interface LoadingStates {
 }
 
 /**
+ * Active sections in the application
+ */
+export type ActiveSection = 'upload' | 'analysis' | 'results' | 'settings';
+
+/**
  * UI state management
  */
 export interface UIState {
   /** Currently active tab or section */
-  activeSection: 'upload' | 'analysis' | 'results' | 'settings';
+  activeSection: ActiveSection;
   /** Whether sidebar is expanded */
   sidebarExpanded: boolean;
   /** Loading states for different operations */

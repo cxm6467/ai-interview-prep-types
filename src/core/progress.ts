@@ -52,6 +52,11 @@ export interface AnalysisRequest {
 }
 
 /**
+ * Analysis status types
+ */
+export type AnalysisStatus = 'pending' | 'completed' | 'failed';
+
+/**
  * Stored analysis result with metadata
  */
 export interface StoredAnalysisResult {
@@ -60,7 +65,7 @@ export interface StoredAnalysisResult {
   /** The analysis result data */
   result: AnalysisResult | PartialAnalysisResult;
   /** Current status of the analysis */
-  status: 'pending' | 'completed' | 'failed';
+  status: AnalysisStatus;
   /** ISO timestamp when the analysis completed */
   completedAt?: string;
   /** Total processing time in milliseconds */

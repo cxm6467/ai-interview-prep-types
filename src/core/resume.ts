@@ -62,9 +62,9 @@ export interface EducationItem {
  */
 export interface ResumeData {
   /** Candidate's full name as it appears on the resume */
-  name: string;
+  name?: string;
   /** Primary contact email address */
-  email: string;
+  email?: string;
   /** Contact phone number (optional) */
   phone?: string;
   /** Professional summary, objective, or profile statement (optional) */

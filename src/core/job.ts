@@ -1,4 +1,9 @@
 /**
+ * Skill importance levels for job requirements
+ */
+export type SkillImportanceLevel = 'required' | 'preferred' | 'nice-to-have';
+
+/**
  * Represents how well a candidate's skill matches a job requirement
  *
  * @example
@@ -14,7 +19,7 @@ export interface SkillMatch {
   /** The name of the skill or technology being evaluated */
   skill: string;
   /** The importance level of this skill for the role */
-  importance: 'required' | 'preferred' | 'nice-to-have';
+  importance: SkillImportanceLevel;
   /** Whether the candidate has experience with this skill */
   hasSkill: boolean;
 }
@@ -33,7 +38,7 @@ export interface SkillMatch {
  *   description: "We are seeking a skilled frontend developer...",
  *   requirements: ["5+ years React experience", "Strong JavaScript skills"],
  *   responsibilities: ["Build user interfaces", "Collaborate with design team"],
- *   requiredSkills: ["React", "JavaScript", "CSS"],
+ *   preferredSkills: ["React", "JavaScript", "CSS"],
  *   experienceYears: 5
  * };
  * ```
@@ -57,10 +62,10 @@ export interface JobDescription {
   preferredQualifications?: string[];
   /** Array of key job responsibilities and duties */
   responsibilities: string[];
-  /** Array of required technical skills and technologies */
-  requiredSkills: string[];
   /** Array of preferred technical skills and technologies */
-  preferredSkills?: string[];
+  preferredSkills: string[];
+  /** Array of required technical skills and technologies */
+  requiredSkills?: string[];
   /** Minimum years of relevant experience required */
   experienceYears?: number;
   /** Educational requirements or preferences */

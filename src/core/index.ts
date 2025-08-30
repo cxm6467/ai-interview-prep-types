@@ -19,3 +19,4 @@ export * from './resume';
 export * from './job';
 export * from './interview';
 export * from './state';
+export * from './app';

@@ -43,10 +43,23 @@ import type {
   AppState,
   AnalysisProgress,
 
+  // App-specific types
+  AppTheme,
+  AppThemeType,
+  RequestBody,
+
   // UI component props
   ButtonProps,
   CardProps,
+  TextProps,
+  FileUploadProps,
   Theme,
+
+  // Extracted type definitions
+  SkillImportanceLevel,
+  InterviewTiming,
+  FontWeight,
+  TextSize,
 } from '@cxm6467/ai-interview-prep-types';
 
 // Example usage

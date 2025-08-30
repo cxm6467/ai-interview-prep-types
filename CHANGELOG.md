@@ -5,6 +5,54 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.4] - 2025-08-30
+
+### Added
+
+- **Application-Specific Types**: New types for enhanced app functionality
+  - `AppTheme` - Extended theme configuration with app-specific branding, spacing, and animations
+  - `AppThemeType` - Extended theme types including 'auto', 'system', and 'high-contrast' variants
+  - `AppState` - Comprehensive application state with features, preferences, and debug settings
+  - `RequestBody` - Alias for `AnalysisRequestBody` for backwards compatibility
+- **Enhanced Component Props**: Extended React component interfaces with app-specific features
+  - `FileUploadProps` - Added file validation, drag-and-drop styling, progress indicators, and preview options
+  - `ButtonProps` - Added app variants ('gradient', 'glass', 'animated'), icons, tooltips, and hover effects
+  - `CardProps` - Added app variants, collapsible functionality, header actions, and footer content
+  - `TextProps` - Added app variants ('gradient', 'outlined', 'shadow', 'glow'), weight, size, and animation options
+- **New Type Definitions**: Extracted inline types for better reusability
+  - `SkillImportanceLevel` - For job requirement importance levels
+  - `InterviewQuestionType`, `CandidateQuestionCategory`, `InterviewTiming` - Interview-related enums
+  - `ActiveSection`, `AnalysisStatus` - Application state enums
+  - `FontWeight`, `TextSize`, `TextTransform` - Typography options
+  - `AppButtonVariant`, `AppCardVariant`, `AppTextVariant` - Extended component variants
+  - `FileValidationResult` - File upload validation structure
+
+### Fixed
+
+- **Interface Compatibility**: Updated interfaces to match actual application usage
+  - `JobDescription` - Changed `requiredSkills` to optional and made `preferredSkills` required
+  - `ResumeData` - Made `name` and `email` fields optional for flexible data parsing
+  - `CandidateQuestion.timing` - Updated values from 'technical'|'initial'|'final' to 'early'|'middle'|'end'
+- **Type Safety**: Eliminated inline literal types in favor of proper type definitions
+- **Code Organization**: All union types extracted to named type definitions
+
+### Changed
+
+- **Type Structure**: Improved type organization with proper extraction of inline types
+- **Component Props**: Enhanced all component prop interfaces with app-specific extensions
+- **Documentation**: Updated JSDoc comments to reflect new functionality and usage patterns
+
+## [1.1.3] - 2025-08-30
+
+### Fixed
+
+- **TypeScript Build Configuration**: Updated build process for proper package publishing
+  - Modified `tsconfig.json` with correct `outDir`, `declarationMap`, and `moduleResolution` settings
+  - Added `files` field to `package.json` to ensure `dist/` folder inclusion in published package
+  - Updated build script to clean output directory before compilation
+  - Added `prepublishOnly` script to ensure build runs before publishing
+- **Package Publishing**: Resolved issues with missing compiled JavaScript and declaration files
+
 ## [1.1.2] - 2025-08-30
 
 ### Fixed
