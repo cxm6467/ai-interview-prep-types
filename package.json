@@ -1,6 +1,6 @@
 {
   "name": "@cxm6467/ai-interview-prep-types",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "Comprehensive TypeScript type definitions for AI-powered interview preparation applications",
   "keywords": [
     "typescript",
@@ -23,25 +23,32 @@
   },
   "license": "ISC",
   "author": "Chris Marasco (github.com/cxm6467)",
-  "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     },
     "./core": {
       "import": "./dist/core/index.js",
-      "types": "./dist/core/index.d.ts"
+      "require": "./dist/core/index.js",
+      "types": "./dist/core/index.d.ts",
+      "default": "./dist/core/index.js"
     },
     "./ui": {
       "import": "./dist/ui/index.js",
-      "types": "./dist/ui/index.d.ts"
+      "require": "./dist/ui/index.js",
+      "types": "./dist/ui/index.d.ts",
+      "default": "./dist/ui/index.js"
     },
     "./external": {
       "import": "./dist/external/index.js",
-      "types": "./dist/external/index.d.ts"
+      "require": "./dist/external/index.js",
+      "types": "./dist/external/index.d.ts",
+      "default": "./dist/external/index.js"
     }
   },
   "files": [
