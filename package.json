@@ -21,10 +21,12 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "ci": "npm run build && npm run format:check",
+    "ci": "npm run build && npm run format:check && npm run spellcheck",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky",
+    "spellcheck": "cspell \"src/**/*.{ts,js,md}\" \"*.md\" --no-progress --no-summary",
+    "spellcheck:check": "npm run spellcheck",
     "test": "echo \"No tests yet\" && exit 0",
     "docs:validate": "npx tsx scripts/validate-jsdoc.ts",
     "validate:jsdoc": "npx tsx scripts/validate-jsdoc.ts"
@@ -32,6 +34,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
+    "cspell": "^9.2.0",
     "glob": "^11.0.0",
     "husky": "^9.1.7",
     "jest": "^30.1.1",
