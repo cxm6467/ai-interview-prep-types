@@ -1,0 +1,25 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "cxm6467",
+    "ai-interview-prep",
+    "TypeScript",
+    "JavaScript",
+    "JSDoc",
+    "tsconfig",
+    "commitlint",
+    "husky",
+    "prettier",
+    "devDependencies",
+    "Marasco",
+    "multimodal",
+    "cand",
+    "labelledby",
+    "haspopup"
+  ],
+  "ignorePaths": ["node_modules/**", "dist/**", "*.map", "package-lock.json"],
+  "ignoreWords": ["NSIRD", "screencaptureui"],
+  "files": ["src/**/*.{ts,js}", "*.md", "*.json"],
+  "enableFiletypes": ["typescript", "javascript", "markdown", "json"]
+}

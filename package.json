@@ -1,0 +1,85 @@
+{
+  "name": "@cxm6467/ai-interview-prep-types",
+  "version": "1.5.5",
+  "description": "Comprehensive TypeScript type definitions for AI-powered interview preparation applications",
+  "keywords": [
+    "typescript",
+    "types",
+    "interview",
+    "resume",
+    "ats",
+    "ai",
+    "job-search",
+    "career",
+    "interview-prep"
+  ],
+  "homepage": "https://github.com/cxm6467/ai-interview-prep-types#readme",
+  "bugs": {
+    "url": "https://github.com/cxm6467/ai-interview-prep-types/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cxm6467/ai-interview-prep-types.git"
+  },
+  "license": "ISC",
+  "author": "Chris Marasco (github.com/cxm6467)",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./core": {
+      "import": "./dist/core/index.js",
+      "require": "./dist/core/index.js",
+      "types": "./dist/core/index.d.ts",
+      "default": "./dist/core/index.js"
+    },
+    "./ui": {
+      "import": "./dist/ui/index.js",
+      "require": "./dist/ui/index.js",
+      "types": "./dist/ui/index.d.ts",
+      "default": "./dist/ui/index.js"
+    },
+    "./external": {
+      "import": "./dist/external/index.js",
+      "require": "./dist/external/index.js",
+      "types": "./dist/external/index.d.ts",
+      "default": "./dist/external/index.js"
+    }
+  },
+  "files": [
+    "dist/",
+    "src/",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "prepublishOnly": "npm run build",
+    "ci": "npm run build && npm run format:check && npm run spellcheck",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky",
+    "spellcheck": "cspell \"src/**/*.{ts,js,md}\" \"*.md\" --no-progress --no-summary",
+    "spellcheck:check": "npm run spellcheck",
+    "test": "echo \"No tests yet\" && exit 0",
+    "docs:validate": "npx tsx scripts/validate-jsdoc.ts",
+    "validate:jsdoc": "npx tsx scripts/validate-jsdoc.ts"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@types/react": "^19.1.12",
+    "cspell": "^9.2.0",
+    "glob": "^11.0.0",
+    "husky": "^9.1.7",
+    "jest": "^30.1.1",
+    "prettier": "^3.6.2",
+    "tsx": "^4.19.1",
+    "typescript": "^5.9.2"
+  }
+}

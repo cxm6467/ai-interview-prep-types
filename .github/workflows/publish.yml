@@ -1,0 +1,140 @@
+name: Publish to NPM
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+jobs:
+  publish:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests and validation
+        run: |
+          npm run docs:validate
+          npm test
+          npm run format
+          npm run spellcheck
+          npm run build
+
+      - name: Prompt for version type
+        id: version-input
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number
+            });
+
+            // Extract version type from PR title or body
+            const prTitle = pr.title.toLowerCase();
+            const prBody = pr.body ? pr.body.toLowerCase() : '';
+
+            let versionType = 'patch'; // default
+
+            if (prTitle.includes('breaking') || prTitle.includes('major') || prBody.includes('breaking change')) {
+              versionType = 'major';
+            } else if (prTitle.includes('feat') || prTitle.includes('feature') || prTitle.includes('minor')) {
+              versionType = 'minor';
+            } else if (prTitle.includes('fix') || prTitle.includes('patch') || prTitle.includes('docs') || prTitle.includes('chore')) {
+              versionType = 'patch';
+            }
+
+            core.setOutput('version-type', versionType);
+            console.log(`Detected version type: ${versionType}`);
+
+            // Create a comment on the PR about the publishing
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: `🚀 This PR will trigger an npm publish with version type: **${versionType}**\n\nThis was auto-detected from the PR title/content. The package will be published shortly.`
+            });
+
+      - name: Configure git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Bump version and publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          VERSION_TYPE: ${{ steps.version-input.outputs.version-type }}
+        run: |
+          echo "Bumping version as $VERSION_TYPE"
+          npm version $VERSION_TYPE
+
+          echo "Publishing to npm..."
+          npm publish
+
+          echo "Pushing version tag to repository..."
+          git push origin main --tags
+
+      - name: Create release
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+            const newVersion = packageJson.version;
+
+            await github.rest.repos.createRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: `v${newVersion}`,
+              name: `Release v${newVersion}`,
+              body: `Automated release for version ${newVersion}\n\nGenerated from PR #${context.payload.pull_request.number}: ${context.payload.pull_request.title}`,
+              draft: false,
+              prerelease: false
+            });
+
+      - name: Update PR with success
+        uses: actions/github-script@v7
+        if: success()
+        with:
+          script: |
+            const fs = require('fs');
+            const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+            const newVersion = packageJson.version;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: `✅ Successfully published version **${newVersion}** to npm!\n\n📦 [View on NPM](https://www.npmjs.com/package/@cxm6467/ai-interview-prep-types/v/${newVersion})\n🏷️ Release created: [v${newVersion}](https://github.com/${context.repo.owner}/${context.repo.repo}/releases/tag/v${newVersion})`
+            });
+
+      - name: Update PR with failure
+        uses: actions/github-script@v7
+        if: failure()
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: `❌ Failed to publish to npm. Please check the [workflow logs](https://github.com/${context.repo.owner}/${context.repo.repo}/actions) for details.`
+            });

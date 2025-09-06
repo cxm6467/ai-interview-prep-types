@@ -1,0 +1,7 @@
+# Validate JSDoc comments with warnings only
+npm run docs:validate
+npm test
+# Format code and re-stage any changes
+npm run format && git add -u
+npm run spellcheck
+npm run build
